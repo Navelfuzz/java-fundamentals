@@ -1,11 +1,21 @@
 package inheritance;
 
-public class Restaurant extends Establishment {
+public class Shop extends Establishment {
+    private String description;
     private String price;
 
-    public Restaurant(String name, String price) {
+    public Shop(String name, String description, String price) {
         super(name);
+        this.description = description;
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPrice() {
@@ -18,9 +28,9 @@ public class Restaurant extends Establishment {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
+        return "Shop{" +
                 "name='" + getName() + '\'' +
-                ", stars=" + getStars() +
+                ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
                 ", reviews=" + getReviews() +
                 '}';
