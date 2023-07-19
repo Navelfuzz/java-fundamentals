@@ -1,4 +1,4 @@
-package inheritance.RestaurantReviews;
+package inheritance;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +7,7 @@ public class Restaurant {
     private String name;
     private double stars;
     private int price;
-    private List<Reveiw> reviews;
+    private List<Review> reviews;
 
     // Constructor
     public Restaurant(String name, double stars, int price){
@@ -21,43 +21,59 @@ public class Restaurant {
     public String getName(){
         return name;
     }
+    // setName
+    public void setName(String name){
+        this.name = name;
+    }
 
     // getStars
     public double getStars(){
         return stars;
     }
+    // setStars
+    public void setStars(double stars){
+        this.stars = stars;
+    }
 
     // getPrice
     public int getPrice(){
-        return getPrice;
+        return price;
+    }
+    // setPrice
+    public void setPrice(int price){
+        this.price = price;
     }
 
     // getReviews
-    public int getPrice(){
+    public List<Review> getReviews(){
         return reviews;
     }
+
 
     // addReview
     public void addReview(Review review){
         if (!reviews.contains(review)){
             reviews.add(review);
-            review.setRestaurant(this);
             updateStars();
         }
     }
 
     // updateStars
     private void updateStars(){
-        int totalStars = 0;
+        double totalStars = 0;
         for (Review review : reviews){
             totalStars += review.getStars();
         }
-        stars = totalStars / reviews.size();
+        stars = reviews.isEmpty() ? 0 : (totalStars / reviews.size());
     }
 
     // print
     @Override
     public String toString() {
-        return "Restaurant: " + name + "\nStars: " + stars + "\nPrice Category: " + "$".repeat(priceCategory) + "\n";
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", stars=" + stars +
+                ", price='" + price + '\'' +
+                '}';
     }
 }
