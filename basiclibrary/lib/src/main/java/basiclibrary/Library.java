@@ -27,7 +27,7 @@ public class Library {
     }
 
     // Task 3: Calculating Averages
-    public double calculateAverage(int[] arr) {
+    public double average(int[] arr) {
         if (arr.length == 0) {
             return 0.0;
         }
@@ -39,7 +39,7 @@ public class Library {
     }
 
     // Task 4: Arrays of Arrays - Calculate lowest average
-    public int[] findArrayWithLowestAverage(int[][] arrays) {
+    public int[] lowestAverage(int[][] arrays) {
         if (arrays.length == 0) {
             return new int[0];
         }
@@ -47,7 +47,7 @@ public class Library {
         int[] lowestAverageArray = null;
 
         for (int[] arr : arrays) {
-            double average = calculateAverage(arr);
+            double average = average(arr);
             if (average < lowestAverage) {
                 lowestAverage = average;
                 lowestAverageArray = arr;
