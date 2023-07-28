@@ -4,7 +4,55 @@
 package basiclibrary;
 
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
+    // Task 1: Rolling Dice
+    public int[] roll(int n) {
+        int[] rolls = new int[n];
+        for (int i = 0; i < n; i++) {
+            // Rolling a six-sided dice (random number between 1 and 6)
+            rolls[i] = (int) (Math.random() * 6) + 1;
+        }
+        return rolls;
+    }
+
+    // Task 2: Contains Duplicates
+    public boolean containsDuplicates(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Task 3: Calculating Averages
+    public double calculateAverage(int[] arr) {
+        if (arr.length == 0) {
+            return 0.0;
+        }
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return (double) sum / arr.length;
+    }
+
+    // Task 4: Arrays of Arrays - Calculate lowest average
+    public int[] findArrayWithLowestAverage(int[][] arrays) {
+        if (arrays.length == 0) {
+            return new int[0];
+        }
+        double lowestAverage = Double.MAX_VALUE;
+        int[] lowestAverageArray = null;
+
+        for (int[] arr : arrays) {
+            double average = calculateAverage(arr);
+            if (average < lowestAverage) {
+                lowestAverage = average;
+                lowestAverageArray = arr;
+            }
+        }
+        return lowestAverageArray;
     }
 }

@@ -5,10 +5,93 @@ package basiclibrary;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
 
 class LibraryTest {
-    @Test void someLibraryMethodReturnsTrue() {
-        Library classUnderTest = new Library();
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
+    @Test void rollTest() {
+        Library sut = new Library();
+        int[] actualOutput = sut.roll(5);
+        assertEquals(5, actualOutput.length, "length of array should be 5");
+
+        for (int roll: actualOutput) {
+            assertTrue(roll >= 1 && roll <= 6, "Roll values should all be between 1 and 6");
+        }
+    }
+
+    @Test void containsDuplicatesTest() {
+        Library sut = new Library();
+        int[] testOne = {1, 3, 4, 7, 9}; //should return false
+        int[] testTwo = {1, 3, 4, 7, 3}; //should return true
+        boolean actualOutputOne = sut.containsDuplicates(testOne);
+        boolean actualOutputTwo = sut.containsDuplicates(testTwo);
+
+        assertEquals(false, actualOutputOne, "Should return false");
+        assertEquals(true, actualOutputTwo, "should return true");
+    }
+
+    @Test void averageTest() {
+        Library sut = new Library();
+        int[] testOne = {1, 3, 4, 7, 9}; //should return 4.8
+        int[] testTwo = {1, 3, 4, 7, 3}; //should return 3.6
+        double actualOutputOne = sut.average(testOne);
+        double actualOutputTwo = sut.average(testTwo);
+
+        assertTrue(actualOutputOne > 4 && actualOutputOne < 5, "Output should be 4.8");
+        assertTrue(actualOutputTwo > 3 && actualOutputTwo < 4, "Output should be 3.6");
+
+    }
+
+    @Test void lowestAverageTest() {
+        Library sut = new Library();
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        int[] expectedArray = {55, 54, 60, 53, 59, 57, 61};
+        int[] actualOutput = sut.lowestAverage(weeklyMonthTemperatures);
+
+        assertArrayEquals(expectedArray, actualOutput, "Array should be {55, 54, 60, 53, 59, 57, 61}");
+    }
+
+    @Test void weatherAnalyzeTest() {
+        Library sut = new Library();
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        String expectedString = "High: 72\n" +
+                "Low: 51\n" +
+                "Never saw temperature: 63\n" +
+                "Never saw temperature: 67\n" +
+                "Never saw temperature: 68\n" +
+                "Never saw temperature: 69";
+        String actualString = sut.weatherAnalyze(weeklyMonthTemperatures);
+
+        assertEquals(expectedString, actualString);
+    }
+
+    @Test void tallyTest() {
+        Library sut = new Library();
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String expectedWinner = "Bush";
+        String actualWinner = sut.tally(votes);
+
+        assertEquals(expectedWinner, actualWinner);
+
+
     }
 }
