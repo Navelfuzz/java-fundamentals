@@ -4,7 +4,7 @@
 package basiclibrary;
 
 public class Library {
-    // Task 1: Rolling Dice
+    // Method 1: Rolling Dice :: Lab 02
     public int[] roll(int n) {
         int[] rolls = new int[n];
         for (int i = 0; i < n; i++) {
@@ -14,7 +14,7 @@ public class Library {
         return rolls;
     }
 
-    // Task 2: Contains Duplicates
+    // Method 2: Contains Duplicates :: Lab 02
     public boolean containsDuplicates(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
@@ -26,7 +26,7 @@ public class Library {
         return false;
     }
 
-    // Task 3: Calculating Averages
+    // Method 3: Calculating Averages :: Lab 02
     public double average(int[] arr) {
         if (arr.length == 0) {
             return 0.0;
@@ -38,7 +38,7 @@ public class Library {
         return (double) sum / arr.length;
     }
 
-    // Task 4: Arrays of Arrays - Calculate lowest average
+    // Method 4: Arrays of Arrays - Calculate lowest average :: Lab 02
     public int[] lowestAverage(int[][] arrays) {
         if (arrays.length == 0) {
             return new int[0];
@@ -54,5 +54,54 @@ public class Library {
             }
         }
         return lowestAverageArray;
+    }
+
+    // Method 5: Analyzing Weather Data :: Lab 03
+    public String analyzeTemperatures(int[][] weeklyMonthTemperatures) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        HashSet<Integer> uniqueTemperatures = new HashSet<>();
+
+        // Find min and max temperatures, and store unique temperatures in the set
+        for (int[] weekTemperatures : weeklyMonthTemperatures) {
+            for (int temperature : weekTemperatures) {
+                uniqueTemperatures.add(temperature);
+                min = Math.min(min, temperature);
+                max = Math.max(max, temperature);
+            }
+        }
+
+        // Create the string containing temperatures not seen during the month
+        StringBuilder result = new StringBuilder();
+        for (int i = min; i <= max; i++) {
+            if (!uniqueTemperatures.contains(i)) {
+                result.append("Never saw temperature: ").append(i).append("\n");
+            }
+        }
+
+        return "High: " + max + "\nLow: " + min + "\n" + result.toString();
+    }
+
+    // Method 6: Tallying Election :: Lab 03
+    public String tally(List<String> votes) {
+        HashMap<String, Integer> tallyMap = new HashMap<>();
+
+        // Count votes
+        for (String candidate : votes) {
+            tallyMap.put(candidate, tallyMap.getOrDefault(candidate, 0) + 1);
+        }
+
+        // Find the candidate with the most votes
+        String winner = "";
+        int maxVotes = 0;
+        for (String candidate : tallyMap.keySet()) {
+            int votesCount = tallyMap.get(candidate);
+            if (votesCount > maxVotes) {
+                maxVotes = votesCount;
+                winner = candidate;
+            }
+        }
+
+        return winner + " received the most votes!";
     }
 }

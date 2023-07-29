@@ -1,5 +1,37 @@
 # CF 401 Java Fundamentals Labs
 
+## Files
+
+        ├── basiclibrary
+        │   ├── lib
+        │   │   ├── main
+        │   │   │   ├── java
+        │   │   │   │   ├── basiclibrary
+        │   │   │   │   │   ├── Library.java
+        │   │   ├── test
+        │   │   │   ├── java
+        │   │   │   │   ├── basiclibrary
+        │   │   │   │   │   ├── LibraryTest.java
+        ├── basics
+        │   ├── Main.java
+        ├── linter
+        │   ├── app
+        │   │   ├── src
+        │   │   │   ├── main
+        │   │   │   │   ├── java
+        │   │   │   │   │   ├── App.java  
+        │   │   │   │   ├── resources
+        │   │   │   │   │   ├── gates.js
+        │   │   │   ├── test
+        │   │   │   │   ├── java
+        │   │   │   │   │   ├── AppTest.java  
+        │   │   │   │   ├── resources
+        │   │   │   │   │   ├── emptyFile.js
+        │   │   │   │   │   ├── fewErrors.js
+        │   │   │   │   │   ├── manyErrors.js
+        │   │   │   │   │   ├── noErrors.js
+        │   │   │   │   │   ├── oneError.js
+
 ## Lab: Class 01
 
 Java Primitives and Control Flow:
@@ -47,5 +79,37 @@ Write a method that accepts an array of integers and calculates and returns the 
 Given an array of arrays calculate the average value for each array and return the array with the lowest average.
 
 ## Lab: Class 03
+
+Maps, File I/O, and Testing
+Directories: linter
+Files: App.java, AppTest.java
+
+### Feature Tasks
+
+**Analyzing Weather Data**
+
+Use the October Seattle weather data above. Iterate through all of the data to find the min and max values. 
+Use a `HashSet` of type `Integer` to keep track of all the unique temperatures seen. Finally, iterate from the min 
+temp to the max temp and create a String containing any temperature not seen during the month. Return that String.
+
+**Tallying Election**
+
+Write a function called `tally` that accepts a List of Strings representing votes and returns one string to show what 
+got the most votes.
+
+**File I/O JavaScript Linter**
+
+Write a method that reads a JavaScript file with a given `Path`, and generates an error message whenever it finds a 
+line that doesn’t end in a semi-colon.
+
+Read through the file line by line. Create a string that contains a message such as `"Line 3: Missing semicolon."` 
+if a line is missing a semicolon.
+
+* Don’t show an error if the line is empty.
+* Don’t show an error if the line ends with an opening curly brace `{`
+* Don’t show an error if the line ends with an closing curly brace `}`
+* Don’t show an error if the line contains `if` or `else`
+
+Call that method in your `main` method on the file `gates.js`, and print out the resulting error message.
 
 ## Lab: Class 04

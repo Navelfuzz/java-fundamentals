@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
 class LibraryTest {
+    // Method 1: Roll dice test :: Lab 02
     @Test
     void rollTest() {
         Library sut = new Library();
@@ -19,6 +20,7 @@ class LibraryTest {
         }
     }
 
+    // Method 2: Contains Duplicates test :: Lab 02
     @Test
     void containsDuplicatesTest() {
         Library sut = new Library();
@@ -31,6 +33,7 @@ class LibraryTest {
         assertTrue(actualOutputTwo, "should return true");
     }
 
+    // Method 3: Average test :: Lab 02
     @Test
     void averageTest() {
         Library sut = new Library();
@@ -44,6 +47,7 @@ class LibraryTest {
 
     }
 
+    // Method 4: Lowest Average test :: Lab 02
     @Test
     void lowestAverageTest() {
         Library sut = new Library();
@@ -57,5 +61,38 @@ class LibraryTest {
         int[] actualOutput = sut.lowestAverage(weeklyMonthTemperatures);
 
         assertArrayEquals(expectedArray, actualOutput, "Array should be {55, 54, 60, 53, 59, 57, 61}");
+    }
+
+    // Method 5: Analyzing Weather Data test :: Lab 03
+    @Test
+    void analyzeTemperaturesTest() {
+        Library sut = new Library();
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        String expectedOutput = "High: 72\nLow: 51\nNever saw temperature: 63\nNever saw temperature: 67\nNever saw temperature: 68\nNever saw temperature: 69\n";
+        assertEquals(expectedOutput, sut.analyzeTemperatures(weeklyMonthTemperatures));
+    }
+
+    // Method 6: Tallying Election test :: Lab 03
+    @Test
+    void tallyTest() {
+        Library sut = new Library();
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String expectedWinner = "Bush received the most votes!";
+        assertEquals(expectedWinner, sut.tally(votes));
     }
 }
